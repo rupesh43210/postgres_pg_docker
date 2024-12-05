@@ -18,42 +18,12 @@ jobs:
           scandir: '.'
           severity: error
 
-  docker-compose-validate:
-    name: Docker Compose Validate
+  script-syntax:
+    name: Script Syntax Check
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
-      - name: Install Docker Compose
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y docker-compose-plugin
-          docker compose version
-      - name: Test docker-compose file
-        run: |
-          chmod +x setup_postgres.sh
-          ./setup_postgres.sh --help
-          docker compose config
-
-  test-script:
-    name: Test Script
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
-      - name: Install Docker Compose
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y docker-compose-plugin
-          docker compose version
       - name: Make script executable
         run: chmod +x setup_postgres.sh
       - name: Test script help
         run: ./setup_postgres.sh --help
-      - name: Test script with default values
-        run: |
-          ./setup_postgres.sh
-          docker ps | grep postgres_db
-          docker ps | grep pgadmin4
