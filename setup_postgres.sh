@@ -277,7 +277,7 @@ EOL
 # Start containers
 start_containers() {
     log_info "Starting containers..."
-    docker-compose up -d
+    docker compose up -d
 
     log_info "Waiting for containers to be ready..."
     wait_for_postgres
