@@ -22,6 +22,7 @@ A bash script to automatically set up PostgreSQL and pgAdmin using Docker contai
 - Persistent data storage using Docker volumes
 - Secure password management
 - Automatic cleanup of configuration files
+- Container health checks and readiness verification
 
 ## Quick Start
 
@@ -112,6 +113,13 @@ To remove the setup:
 - Consider using environment variables for sensitive information
 - Restrict network access in production environments
 - Regular backup of your databases is recommended
+
+## Continuous Integration
+
+The project includes GitHub Actions workflows for:
+- Shell script syntax validation using ShellCheck
+- Basic script functionality testing
+- Security vulnerability scanning
 
 ## Contributing
 
