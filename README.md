@@ -1,5 +1,11 @@
 # PostgreSQL and pgAdmin Setup Script
 
+[![CI](https://github.com/{username}/postgres-pgadmin-docker/actions/workflows/ci.yml/badge.svg)](https://github.com/{username}/postgres-pgadmin-docker/actions/workflows/ci.yml)
+[![Security Scan](https://github.com/{username}/postgres-pgadmin-docker/actions/workflows/security.yml/badge.svg)](https://github.com/{username}/postgres-pgadmin-docker/actions/workflows/security.yml)
+![Shell Script](https://img.shields.io/badge/shell_script-%23121011.svg?style=flat&logo=gnu-bash&logoColor=white)
+![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=flat&logo=docker&logoColor=white)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 A bash script to automatically set up PostgreSQL and pgAdmin using Docker containers. This script provides an easy way to deploy a PostgreSQL database server along with pgAdmin for database management.
 
 ## Prerequisites

@@ -1,0 +1,44 @@
+name: CI
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  shellcheck:
+    name: Shellcheck
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Run ShellCheck
+        uses: ludeeus/action-shellcheck@master
+        with:
+          scandir: '.'
+          severity: error
+
+  docker-compose-validate:
+    name: Docker Compose Validate
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Test docker-compose file
+        run: |
+          ./setup_postgres.sh --help
+          docker-compose -f docker-compose.yml config
+
+  test-script:
+    name: Test Script
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Make script executable
+        run: chmod +x setup_postgres.sh
+      - name: Test script help
+        run: ./setup_postgres.sh --help
+      - name: Test script with default values
+        run: |
+          ./setup_postgres.sh
+          docker ps | grep postgres_db
+          docker ps | grep pgadmin4
